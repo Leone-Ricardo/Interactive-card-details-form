@@ -1,0 +1,239 @@
+@import url("https://fonts.google.com/specimen/Space+Grotesk");
+:root {
+  --white: hsl(0, 0%, 100%);
+  --Light-grayish-violet: hsl(270, 3%, 87%);
+  --Dark-grayish-violet: hsl(279, 6%, 55%);
+  --Very-dark-violet: hsl(278, 68%, 11%);
+  --Red: hsl(0, 100%, 66%);
+  --input-border: linear-gradient(
+    to bottom,
+    hsl(249, 99%, 64%),
+    hsl(278, 94%, 30%)
+  );
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Space Gotresk", sans-serif;
+  font-size: 18px;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+main {
+  min-height: auto;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+section.cards-container {
+  height: 13em;
+  min-width: 100vw;
+  background: transparent url("/images/bg-main-mobile.png") no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section.cards-container > div.card-back {
+  position: absolute;
+  height: 10em;
+  min-width: 17em;
+  background: transparent url("/images/bg-card-back.png") no-repeat;
+  background-size: contain;
+  transform: translate(1.5em, 1em);
+  color: var(--white);
+}
+
+section.cards-container > div.card-front {
+  position: absolute;
+  height: 10em;
+  min-width: 17em;
+  padding: 1em;
+  color: var(--white);
+  background: transparent url("/images/bg-card-front.png") no-repeat;
+  background-size: cover;
+  transform: translate(-1.5em, 6.5em);
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+p#cardCvc {
+  transform: translate(12em, 3.9em);
+  width: fit-content;
+}
+div.card-front > div.logo {
+  height: 2em;
+  width: 100%;
+  background: transparent url("/images/card-logo.svg") no-repeat;
+  background-size: contain;
+  align-self: flex-start;
+}
+p#cardNumber {
+  font-size: 1.2rem;
+}
+div.card-front > div:not(div.logo) {
+  display: flex;
+  justify-content: space-between;
+  justify-self: flex-end;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+form,
+section.complete {
+  width: 100%;
+  height: auto;
+  padding: 5em 1em 0em 1em;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+section.complete > h1 {
+  text-transform: uppercase;
+  color: var(--Very-dark-violet);
+  text-align: center;
+}
+section.complete > div.th {
+  background: transparent url("/images/icon-complete.svg") no-repeat;
+  background-size: contain;
+  width: 5em;
+  min-height: 5em;
+  border-radius: 50%;
+  align-self: center;
+}
+section.complete > p {
+  text-align: center;
+  color: var(--Dark-grayish-violet);
+}
+section.complete > a {
+  width: 80%;
+  height: 2.8em;
+  text-decoration: none;
+  text-align: center;
+  color: var(--white);
+  border-radius: 0.5em;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Very-dark-violet);
+}
+section.complete > a:hover {
+  color: var(--Light-grayish-violet);
+}
+p.error {
+  font-size: 0.8rem;
+  color: var(--Red);
+}
+div.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+div.field-container {
+  display: flex;
+  gap: 1em;
+  width: 100%;
+  height: auto;
+}
+div.field-container > div.field > div {
+  display: flex;
+  width: auto;
+  height: auto;
+  gap: 1em;
+}
+div.field-container > div.field > div > input {
+  width: 4em;
+}
+div.field:has(input[name="cvc"]) {
+  width: 100%;
+}
+input[name="cvc"] {
+  width: 100%;
+}
+
+label {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--Very-dark-violet);
+}
+.input-valid {
+  height: 3em;
+  border-radius: 0.5em;
+  padding: 0.6em;
+  border: 0.1em solid var(--Light-grayish-violet);
+  font-size: 1em;
+}
+.input-error {
+  border: 0.1em solid var(--Red);
+}
+.input-valid::placeholder {
+  color: var(--Light-grayish-violet);
+}
+input[type="submit"] {
+  height: 3.5em;
+  border-radius: 0.5em;
+  background-color: var(--Very-dark-violet);
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+}
+input[type="submit"]:hover {
+  color: var(--Dark-grayish-violet);
+}
+div.spinner {
+  min-width: 10em;
+  min-height: 7em;
+  position: relative;
+}
+div.dot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+div.dot::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: var(--Very-dark-violet);
+}
+div.dot {
+  animation: spin 1.8s infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+div.dot:nth-child(2) {
+  animation-delay: 100ms;
+}
+div.dot:nth-child(3) {
+  animation-delay: 200ms;
+}
+div.dot:nth-child(4) {
+  animation-delay: 300ms;
+}
+div.dot:nth-child(5) {
+  animation-delay: 400ms;
+}
+
+@media screen and (max-width: 990px) {
+  .attribution {
+    margin-top: 500px;
+  }
+}
